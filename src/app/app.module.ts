@@ -12,6 +12,13 @@ import { JwtInterceptor } from './_interceptors/JwtInterceptor';
 import { ErrorInterceptor } from './_interceptors/ErrorInterceptor';
 import { fakeBackendProvider } from './_interceptors/fakeBackend';
 
+import {PasswordModule} from 'primeng/password';
+import { FormsModule } from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PanelModule} from 'primeng/panel';
+import {CardModule} from 'primeng/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +30,13 @@ import { fakeBackendProvider } from './_interceptors/fakeBackend';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PasswordModule,
+    ButtonModule,
+    BrowserAnimationsModule,
+    PanelModule,
+    FormsModule,
+    CardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
