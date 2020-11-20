@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           return;
       }
       this.loginInfo = new LoginInfo( this.f.username.value, this.f.password.value);
-
+      console.log(this.f.username.value+' '+this.f.password.value);
       this.loading = true;
       this.authenticationService.login(this.loginInfo)
           .pipe(first())

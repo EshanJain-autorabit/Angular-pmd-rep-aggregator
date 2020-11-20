@@ -5,32 +5,34 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { LoginInfo } from '../_models/LoginInfo';
 import { SignUpInfo } from '../_models/SignupInfo';
+import { LoginResponse } from '../_models/LoginResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
-  private loginUrl = 'http://localhost:8080/api/auth/signin';
-  private signupUrl = 'http://localhost:8080/api/auth/signup';
+  private key = 'currentUser';
+  private currentUserSubject: BehaviorSubject<LoginResponse>;
+  public currentUser: Observable<LoginResponse>;
+  private loginUrl = 'http://localhost:8081/api/auth/signin';
+  private signupUrl = 'http://localhost:8081/api/auth/signup';
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<LoginResponse>(JSON.parse(localStorage.getItem(this.key)));
     this.currentUser = this.currentUserSubject.asObservable();
    }
 
-   public get currentUserValue(): User {
+   public get currentUserValue(): LoginResponse {
     return this.currentUserSubject.value;
 }
 
-login(credentials: LoginInfo): Observable<User>{
-    return this.http.post<any>(`http://localhost:4200/users/authenticate`, credentials)
-        .pipe(map(user => {
+login(credentials: LoginInfo): Observable<LoginResponse>{
+    return this.http.post<any>(this.loginUrl, credentials)
+        .pipe(map(loginResponse => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            this.currentUserSubject.next(user);
-            return user;
+            localStorage.setItem( this.key , JSON.stringify(loginResponse));
+            this.currentUserSubject.next(loginResponse);
+            return loginResponse;
         }));
 }
 
@@ -41,7 +43,7 @@ signUp(info: SignUpInfo): Observable<any> {
 
 logout(): void {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem(this.key);
     this.currentUserSubject.next(null);
 }
 }

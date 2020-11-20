@@ -10,8 +10,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_interceptors/JwtInterceptor';
 import { ErrorInterceptor } from './_interceptors/ErrorInterceptor';
-import { fakeBackendProvider } from './_interceptors/fakeBackend';
-
 import {PasswordModule} from 'primeng/password';
 import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
@@ -41,9 +39,6 @@ import {CardModule} from 'primeng/card';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-    // provider used to create fake backend
-    fakeBackendProvider
   ],
 
   bootstrap: [AppComponent]
