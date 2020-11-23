@@ -26,6 +26,10 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
 }
 
+public set currentUserValue(loginResponse: LoginResponse){
+   this.currentUserSubject.next(loginResponse);
+}
+
 login(credentials: LoginInfo): Observable<LoginResponse>{
     return this.http.post<any>(this.loginUrl, credentials)
         .pipe(map(loginResponse => {
@@ -46,4 +50,5 @@ logout(): void {
     localStorage.removeItem(this.key);
     this.currentUserSubject.next(null);
 }
+
 }

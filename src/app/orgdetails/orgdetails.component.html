@@ -1,0 +1,100 @@
+<div class="p-m-6">
+  <h2>Org Details</h2>
+  <button
+    pButton
+    pRipple
+    type="button"
+    label="Add SF Org"
+    icon="pi pi-plus"
+    iconPos="right"
+    class="p-button p-button-rounded p-button-raised p-mt-4"
+    (click)="op.toggle($event)"
+  ></button>
+  <p-overlayPanel #op [showCloseIcon]="true" styleClass="bg-light">
+    <ng-template pTemplate>
+      <h5 class="text-center text-info p-m-1 font-weight-bold">
+        Enter Org Details
+      </h5>
+      <span class="p-float-label p-m-4">
+        <input
+          id="float-input"
+          type="text"
+          pInputText
+          [(ngModel)]="orgName"
+          required
+        />
+        <label for="float-input">Org Name*</label>
+      </span>
+
+      <p-dropdown
+        required
+        class="p-m-4"
+        [options]="versions"
+        [(ngModel)]="selectedVersion"
+        optionLabel="version"
+        [filter]="true"
+        filterBy="version"
+        [showClear]="true"
+        placeholder="Api Version*"
+      >
+        <ng-template pTemplate="SelectedItem">
+          <div *ngIf="selectedVersion">
+            {{ selectedVersion }}
+          </div>
+        </ng-template>
+        <ng-template let-versions pTemplate="item">
+          <div>{{ versions.version }}</div>
+        </ng-template>
+      </p-dropdown>
+
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Add"
+        icon="pi pi-plus"
+        iconPos="right"
+        class="p-button p-button-rounded p-button-raised p-ml-4"
+        (click)="addOrg()"
+      ></button>
+    </ng-template>
+  </p-overlayPanel>
+
+  
+  <div class="p-m-4">
+    <p-fieldset [toggleable]="true" collapsed="true" styleClass="bg-light" >
+      <p-header >
+        <div Class="text-success">View Orgs</div>
+      </p-header>
+    <p-table [value]="orgs">
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+          <h4 class="text-warning">Registered Orgs</h4>
+          <p-button icon="pi pi-refresh"></p-button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Org Name</th>
+          <th>Org Id</th>
+          <th>Api Version</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-org>
+        <tr>
+          <td>{{ org.orgName }}</td>
+          <td>{{ org.id.orgId }}</td>
+          <td>{{ org.salesforceVersion | number: "1.1" }}</td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="summary">
+        <div class="p-text-center alert alert-info">
+          {{ summary }}
+        </div>
+      </ng-template>
+    </p-table>
+  </p-fieldset>
+  </div>
+
+</div>

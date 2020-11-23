@@ -16,13 +16,23 @@ import {ButtonModule} from 'primeng/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PanelModule} from 'primeng/panel';
 import {CardModule} from 'primeng/card';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { OrgdetailsComponent } from './orgdetails/orgdetails.component';
+import {RippleModule} from 'primeng/ripple';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {InputTextModule} from 'primeng/inputtext';
+import {DropdownModule} from 'primeng/dropdown';
+import {TableModule} from 'primeng/table';
+import {FieldsetModule} from 'primeng/fieldset';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SignUpComponent
+    SignUpComponent,
+    UserProfileComponent,
+    OrgdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +44,13 @@ import {CardModule} from 'primeng/card';
     BrowserAnimationsModule,
     PanelModule,
     FormsModule,
-    CardModule
+    CardModule,
+    RippleModule,
+    OverlayPanelModule,
+    InputTextModule,
+    DropdownModule,
+    TableModule,
+    FieldsetModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
