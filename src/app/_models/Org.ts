@@ -1,8 +1,8 @@
-import { Orgid } from './OrgId';
+import { OrgId } from './OrgId';
 
 export class Org
 {
-    id: Orgid;
+    id: OrgId;
     orgName: string;
     salesforceVersion: number;
 }

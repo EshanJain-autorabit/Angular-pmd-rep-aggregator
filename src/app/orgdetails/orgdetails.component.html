@@ -1,5 +1,4 @@
-<div class="p-m-6">
-  <h2>Org Details</h2>
+<p-card  styleClass="p-m-1 p-p-2  bg-light" header="Org Details">
   <button
     pButton
     pRipple
@@ -62,11 +61,11 @@
 
   
   <div class="p-m-4">
-    <p-fieldset [toggleable]="true" collapsed="true" styleClass="bg-light" >
+    <p-fieldset [toggleable]="true" collapsed="true"  >
       <p-header >
         <div Class="text-success">View Orgs</div>
       </p-header>
-    <p-table [value]="orgs">
+    <p-table [value]="orgs" styleClass="p-datatable-striped">
       <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
           <h4 class="text-warning">Registered Orgs</h4>
@@ -80,8 +79,8 @@
           <th>Api Version</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-org>
-        <tr>
+      <ng-template pTemplate="body" let-org >
+        <tr class="text-info p-text-bold">
           <td>{{ org.orgName }}</td>
           <td>{{ org.id.orgId }}</td>
           <td>{{ org.salesforceVersion | number: "1.1" }}</td>
@@ -97,4 +96,4 @@
   </p-fieldset>
   </div>
 
-</div>
+</p-card>

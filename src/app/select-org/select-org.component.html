@@ -1,0 +1,35 @@
+<div class="card p-m-6 p-p-4 bg-light">
+
+  <div class="p-d-flex p-ai-center p-jc-start alert alert-warning" *ngIf="!isOrgPresent">
+        No Org is Registered Yet. Please register one Under User Profile.
+   </div>
+
+   <div class="card-body">
+  <h4 class="text-warning p-m-2 p-p-2" style = "display:inline"> Selected Org </h4>
+  <p-dropdown
+    [options]="orgs"
+    [(ngModel)]="selectedOrg"
+    optionLabel="orgName"
+    [filter]="true"
+    filterBy="orgName"
+    [showClear]="true"
+    placeholder="Select a Org"
+    (onChange)="change()"
+    [disabled]="!isOrgPresent"
+  >
+    <ng-template pTemplate="selectedItem">
+      <div class="" *ngIf="selectedOrg">
+        <div class="p-text-bold text-success">{{ selectedOrg.orgName +" | "+selectedOrg.id?.orgId +" | "}}{{ selectedOrg.salesforceVersion | number: "1.1"}}</div>
+      </div>
+    </ng-template>
+    <ng-template let-org pTemplate="item">
+      <div>
+        <div class="text-info">{{ org.orgName +" | "+org.id?.orgId +" | "}} {{org.salesforceVersion | number: "1.1"}}  </div>
+      </div>
+    </ng-template>
+  </p-dropdown>
+</div>
+  <button pRipple [disabled] = "disabled" class = "btn-block p-my-4  pi pi-chevron-circle-right" [ngClass]="disabled ? 'btn btn-light ' : 'btn btn-primary' "
+  (click)="nextPage()" >  Start Analysis </button>
+
+</div>

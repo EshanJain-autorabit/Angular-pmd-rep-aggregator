@@ -1,4 +1,11 @@
-<p>user-profile works!</p>
-<p-card>
+
+<div class = "p-m-4 p-p-2 bg-secondary">
+<p-card  header = "User Profile" styleClass="bg-light"> 
+    <div class="p-d-flex p-ai-center p-jc-start">
+    <h1 class="p-mx-6  text-info pi pi-user"> {{user.userName}} </h1>
+    <h2 class="pi pi-envelope">
+        <label class="p-mx-2">{{user.email}} </label></h2>  
+    </div>
 <app-orgdetails></app-orgdetails>
 </p-card>
+</div>

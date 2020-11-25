@@ -1,0 +1,36 @@
+<div class="card p-m-6 p-p-4 bg-light">
+
+    <h5 class="text-warning">Select Apex Class/Classes </h5>
+    
+    <p-table [value]="apexClasses" [loading]="loading"
+     [(selection)]="selectedClasses" selectionMode="multiple">
+        <ng-template pTemplate="header">
+            <tr >
+                <th style="width: 5rem">
+                   All <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th>Apex Class</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-apexClass let-rowIndex="rowIndex">
+            <tr [pSelectableRow] = "apexClass" [pSelectableRowIndex]="rowIndex" class="p-text-bold text-info"> 
+                <td>
+                    <p-tableCheckbox [value]="apexClass"></p-tableCheckbox>
+                </td>
+                <td>{{apexClass}}</td>  
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage" let-columns >
+            <tr >
+                <td [attr.colspan]="2">
+      <div class="alert alert-warning text-center">No Apex Class is found in your Org</div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    
+    <button [disabled] = "!isApexClassesPresent" pRipple class="btn btn-primary p-m-6" (click) = "nextPage()">Next</button>
+</div>
+
+<p-toast position="bottom-center" key="bc"></p-toast>

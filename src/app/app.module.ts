@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CheckboxControlValueAccessor, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_interceptors/JwtInterceptor';
 import { ErrorInterceptor } from './_interceptors/ErrorInterceptor';
@@ -24,6 +24,13 @@ import {InputTextModule} from 'primeng/inputtext';
 import {DropdownModule} from 'primeng/dropdown';
 import {TableModule} from 'primeng/table';
 import {FieldsetModule} from 'primeng/fieldset';
+import {StepsModule} from 'primeng/steps';
+import { SelectOrgComponent } from './select-org/select-org.component';
+import { SelectApexComponent } from './select-apex/select-apex.component';
+import {CheckboxModule} from 'primeng/checkbox';
+import {ToastModule} from 'primeng/toast';
+import { ViewReportComponent } from './view-report/view-report.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +39,10 @@ import {FieldsetModule} from 'primeng/fieldset';
     HomeComponent,
     SignUpComponent,
     UserProfileComponent,
-    OrgdetailsComponent
+    OrgdetailsComponent,
+    SelectOrgComponent,
+    SelectApexComponent,
+    ViewReportComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +60,10 @@ import {FieldsetModule} from 'primeng/fieldset';
     InputTextModule,
     DropdownModule,
     TableModule,
-    FieldsetModule
+    FieldsetModule,
+    StepsModule,
+    CheckboxModule,
+    ToastModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -94,6 +94,6 @@ addOrg(): void {
       'response_type=code&' +
       'state=' +
       state;
-    open(url, '_self');
+    window.open(url, '_self');
   }
 }
