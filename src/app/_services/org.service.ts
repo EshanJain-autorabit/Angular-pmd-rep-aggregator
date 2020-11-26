@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { ApexClassesResponse } from '../_models/ApexClassesResponse';
 import { Org } from '../_models/Org';
 import { OrgId } from '../_models/OrgId';
+import { PmdReport } from '../_models/PmdReport';
+import { PmdRequest} from '../_models/PmdRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,7 @@ export class OrgService {
       return this.http.post<ApexClassesResponse>(this.baseUrl + '/retrieve', orgId);
   }
 
-  getApexReport(apexClassesResponse: ApexClassesResponse): Observable<string>{
-    return this.http.post<string>(this.baseUrl + '/report', apexClassesResponse);
-}
+  getApexReport(pmdRequest: PmdRequest): Observable<PmdReport>{
+    return this.http.post<PmdReport>(this.baseUrl + '/auth/report', pmdRequest);
+  }
 }

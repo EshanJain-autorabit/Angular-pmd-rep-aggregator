@@ -1,5 +1,4 @@
- 
- export class PmdRquest{
+ export class PmdRequest{
     apexClasses: string[];
     orgId: string;
     rules: string[];

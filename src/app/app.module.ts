@@ -30,6 +30,7 @@ import { SelectApexComponent } from './select-apex/select-apex.component';
 import {CheckboxModule} from 'primeng/checkbox';
 import {ToastModule} from 'primeng/toast';
 import { ViewReportComponent } from './view-report/view-report.component';
+import {TreeModule} from 'primeng/tree';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { ViewReportComponent } from './view-report/view-report.component';
     FieldsetModule,
     StepsModule,
     CheckboxModule,
-    ToastModule
+    ToastModule,
+    TreeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

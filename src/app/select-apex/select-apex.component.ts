@@ -12,7 +12,6 @@ import { AnalysisService } from '../_services/analysis.service';
   providers: [MessageService]
 })
 export class SelectApexComponent implements OnInit{
-  message: string;
   orgId: OrgId ;
   apexClasses: string[];
   selectedClasses: string[];
@@ -28,17 +27,17 @@ export class SelectApexComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.message = params.get('orgId');
-      this.orgId = new OrgId(this.message) ;
+      const id = params.get('orgId');
+      this.orgId = new OrgId(id) ;
       this.apexClasses = [];
-      this.apexClasses.push('fsafs', 'daFFF', 'Dafffa');
-      console.log(this.apexClasses);
-      //this.getApexClasses();
+     // this.apexClasses.push('MyClass.cls', 'SecondClass.cls');
+      this.getApexClasses();
       // this needs to be comment
-      this.loading = false;
-      this.isApexClassesPresent = true;
+    //  this.loading = false;
+    //  this.isApexClassesPresent = true;
   });
   }
+
   getApexClasses(): void{
     this.orgService.getApexClasses(this.orgId).subscribe(apexClassesResponse => {
         this.apexClasses = apexClassesResponse.apexClasses;
@@ -61,6 +60,4 @@ export class SelectApexComponent implements OnInit{
     this.analysisService.setApexClasses(this.selectedClasses);
     this.router.navigate(['/view report']);
   }
-
-
 }
