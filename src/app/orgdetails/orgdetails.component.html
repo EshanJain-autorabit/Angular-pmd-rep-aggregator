@@ -1,4 +1,5 @@
-<p-card  styleClass="p-m-1 p-p-2  bg-light" header="Org Details">
+<p-card  styleClass="p-m-1 p-p-2 bg-light" header="">
+  <h3 class="text-secondary">Org Details</h3>
   <button
     pButton
     pRipple
@@ -61,11 +62,11 @@
 
   
   <div class="p-m-4">
-    <p-fieldset [toggleable]="true" collapsed="true"  >
+    <p-fieldset [toggleable]="true" collapsed="true"  styleClass="bg-light" >
       <p-header >
         <div Class="text-success">View Orgs</div>
       </p-header>
-    <p-table [value]="orgs" styleClass="p-datatable-striped">
+    <p-table [value]="orgs"  [autoLayout]="true">
       <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
           <h4 class="text-warning">Registered Orgs</h4>

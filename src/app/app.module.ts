@@ -33,6 +33,9 @@ import {StepsModule} from 'primeng/steps';
 import {CheckboxModule} from 'primeng/checkbox';
 import {ToastModule} from 'primeng/toast';
 import {MultiSelectModule} from 'primeng/multiselect';
+import { ViewReportComponent } from './view-report/view-report.component';
+import {TreeModule} from 'primeng/tree';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +71,7 @@ import {MultiSelectModule} from 'primeng/multiselect';
     CheckboxModule,
     ToastModule,
     MultiSelectModule
+    TreeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -1,1 +1,44 @@
-<p>view-report works!</p>
+<div class="card p-m-6 p-p-4 ">
+
+    <h5 class="text-warning">Pmd Report</h5>
+   
+<p-table styleClass="p-mt-4">
+    <ng-template pTemplate="header" [value]="">
+        <tr >
+            <th >Files </th>
+            <th class="text-info">Violations  </th>
+            <th class="text-danger">Priority High</th>
+             <th class="text-warning">Priority Medium </th>
+            <th class="text-primary">Priority Low </th>
+        </tr>
+    </ng-template>  
+    <ng-template pTemplate="footer" >
+        <tr >
+            <td > {{files}} </td>
+            <td class="text-info"> {{violations}} </td>
+            <td class="text-danger">{{priority1}} </td>
+             <td class="text-warning">{{priority3}}</td>
+            <td class="text-primary">{{priority5}}</td>
+        </tr>
+    </ng-template>   
+</p-table>
+
+<h5 class="text-warning p-mt-4 p-mx-2" >Details</h5>
+
+<p-tree [value]="nodes" styleClass="p-mt-2 bg-light">
+    <ng-template let-node pTemplate="viol">
+       <b class="text-info"> {{node.label}} </b> 
+    </ng-template>
+    <ng-template let-node pTemplate="desc" styleClass="text-info" >
+       <b>{{node.label}} </b>
+    </ng-template>
+    <ng-template let-node pTemplate="prior" styleClass="text-warning">
+       <b class="text-warning ">{{node.label}}</b>
+    </ng-template>
+    <ng-template let-node pTemplate="default">
+        <b class = "text-primary" >{{node.label}}</b>
+    </ng-template>
+</p-tree>
+
+
+</div>

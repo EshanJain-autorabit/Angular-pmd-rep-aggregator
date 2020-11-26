@@ -24,11 +24,11 @@ export class HomeComponent implements OnInit {
     this.items = [
       {
         label: 'Select Org',
-        routerLink: 'selectOrg'
+        routerLink: 'select org'
       },
       {
         label: 'Select Apex Class/Classes',
-        routerLink: 'selectApexClass'
+        routerLink: 'select apex class'
       },
       {
         label: 'Select Rule/Rules',
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       },
       {
         label: 'View Report',
-        routerLink: ''
+        routerLink: 'view report'
       },
     ];
   }

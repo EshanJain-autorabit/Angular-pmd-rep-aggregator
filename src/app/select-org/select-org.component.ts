@@ -21,7 +21,7 @@ export class SelectOrgComponent implements OnInit {
   ) {
     this.authService.currentUser.subscribe((loginResponse) => {
       this.orgs = loginResponse.user.orgs;
-      //this.orgs = [];
+      // this.orgs = [];
       if (this.orgs.length > 0) {
         this.isOrgPresent = true;
       }
@@ -34,12 +34,13 @@ export class SelectOrgComponent implements OnInit {
       this.disabled = true;
     } else {
       this.disabled = false;
-      //console.log(this.selectedOrg.id.orgId);
+      // console.log(this.selectedOrg.id.orgId);
     }
   }
 
   nextPage(): void {
     this.analysisService.setOrgId(this.selectedOrg.id.orgId);
-    this.router.navigate(['/selectApexClass', this.selectedOrg.id.orgId]);
+    //console.log(this.analysisService.getOrgId());
+    this.router.navigate(['/select apex class', this.selectedOrg.id.orgId]);
   }
 }

@@ -13,9 +13,9 @@ import { AuthGuard } from './_services/auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard], children: [
-    { path: '', redirectTo: '/selectOrg', pathMatch: 'full' },
-    {path: 'selectOrg', component: SelectOrgComponent},
-    {path: 'selectApexClass/:orgId', component: SelectApexComponent},
+    { path: '', redirectTo: '/select org', pathMatch: 'full' },
+    {path: 'select org', component: SelectOrgComponent},
+    {path: 'select apex class/:orgId', component: SelectApexComponent},
     {path: 'view report', component: ViewReportComponent},
   ]},
   {path: 'login', component: LoginComponent},
