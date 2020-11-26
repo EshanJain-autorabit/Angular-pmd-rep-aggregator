@@ -1,0 +1,47 @@
+<div class="card p-m-6 p-p-4 bg-light">
+  <div class="card-body p-fluid">
+    <h4 class="text-warning p-m-2 p-p-2" style = "display:inline"> Ruleset Selection </h4>
+    <br>
+    <p-multiSelect
+      id="ruleset"
+      [options]="rulesets"
+      [(ngModel)]="selectedRulesets"
+      placeholder="Select Rulesets"
+      [maxSelectedLabels]
+      (onPanelHide)="getRuleDropdownData(selectedRulesets)"
+      display="chip"
+    ></p-multiSelect>
+    <br>
+    <p-multiSelect
+      id="rules"
+      [options]="rules"
+      [(ngModel)]="selectedRules"
+      placeholder="Select Rules"
+      optionLabel="ruleName"
+      [virtualScroll]="true"
+      [maxSelectedLabels]
+    >
+      <!-- <ng-template let-selectedRules pTemplate="selectedItem">
+        <div class="" *ngIf="selectedRules">
+          <div class="p-text-bold">{{ selectedRules.length }} + "selected"</div>
+        </div>
+      </ng-template> -->
+      <ng-template let-rules pTemplate="item">
+        <div *ngIf="rules.deprecated; else elseBlock">
+          {{ rules.ruleName + " | " + rules.priorityLabel + " | " }}
+          <span style="color: #ff0000">D</span>
+        </div>
+        <ng-template #elseBlock
+          >{{ rules.ruleName + " | " + rules.priorityLabel }}
+        </ng-template>
+      </ng-template>
+    </p-multiSelect>
+    <button
+      pRipple
+      class="btn-block btn btn-primary p-my-4 pi pi-chevron-circle-right"
+      (click)="submitRulePaths(selectedRules)" 
+    >
+      Submit
+    </button>
+  </div>
+</div>
