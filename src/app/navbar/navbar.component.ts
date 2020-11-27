@@ -19,7 +19,8 @@ export class NavbarComponent implements OnInit {
           {label: 'Home', icon: 'pi pi-fw pi-home', routerLink:['/select org']},
           {label: 'User Profile', icon: 'pi pi-fw pi-user', routerLink:['/user profile']},
           {label: 'Logout', icon: 'pi pi-fw pi-power-off', command: (event) =>{this.authService.logout();
-          location.reload();} }
+          location.reload();} },
+          {label: 'About Project', icon: 'pi pi-book', routerLink:['/overview']}
       ];
 
       this.activeItem = this.items[0];

@@ -21,9 +21,8 @@ import {ToastModule} from 'primeng/toast';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {TreeModule} from 'primeng/tree';
 import {TabMenuModule} from 'primeng/tabmenu';
-// import {MenubarModule} from 'primeng/menubar';
 import {SliderModule} from 'primeng/slider';
-
+import {BreadcrumbModule} from 'primeng/breadcrumb';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +38,7 @@ import { SelectOrgComponent } from './select-org/select-org.component';
 import { SelectApexComponent } from './select-apex/select-apex.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
@@ -53,7 +53,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     SelectApexComponent,
     ViewReportComponent,
     RulesetSelectionComponent,
-    NavbarComponent
+    NavbarComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +80,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     TreeModule,
     TabMenuModule,
     SliderModule,
+    BreadcrumbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

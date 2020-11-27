@@ -10,6 +10,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { AuthGuard } from './_services/auth-guard.service';
+import { InfoComponent } from './info/info.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard], children: [
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'signUp', component: SignUpComponent},
   {path: 'orgDetails', component: OrgdetailsComponent},
   {path: 'user profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'overview', component: InfoComponent},
   { path: '**', redirectTo: '' }
 ];
 
