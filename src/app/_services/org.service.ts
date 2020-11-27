@@ -24,6 +24,7 @@ export class OrgService {
   }
 
   getApexReport(pmdRequest: PmdRequest): Observable<PmdReport>{
-    return this.http.post<PmdReport>(this.baseUrl + '/auth/report', pmdRequest);
+    return this.http.post<PmdReport>(this.baseUrl + '/report', pmdRequest);
   }
+
 }

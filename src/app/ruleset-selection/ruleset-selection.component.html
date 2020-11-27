@@ -1,6 +1,6 @@
 <div class="card p-m-6 p-p-4 bg-light">
   <div class="card-body p-fluid">
-    <h4 class="text-warning p-m-2 p-p-2" style = "display:inline"> Ruleset Selection </h4>
+    <h4 class="text-warning p-m-2 p-p-2" style = "display:inline-block"> Ruleset Selection </h4>
     <br>
     <p-multiSelect
       id="ruleset"
@@ -36,12 +36,17 @@
         </ng-template>
       </ng-template>
     </p-multiSelect>
+    <br>
+    <label for="priority">Set Test Priority</label>
+    <input type="text" pInputText [(ngModel)]="priority" readonly/>
+    <p-slider id="priority" [(ngModel)]="priority" [min]="1" [max]="5" aria-describedby="slider-help"></p-slider>
+    <small id="slider-help">Coverage increases with priority value</small>
     <button
       pRipple
       class="btn-block btn btn-primary p-my-4 pi pi-chevron-circle-right"
       (click)="submitRulePaths(selectedRules)" 
     >
-      Submit
+      View Report
     </button>
   </div>
 </div>

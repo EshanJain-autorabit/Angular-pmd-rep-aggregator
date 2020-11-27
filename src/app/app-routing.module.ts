@@ -16,7 +16,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'select org', pathMatch: 'full' },
     {path: 'select org', component: SelectOrgComponent},
     {path: 'select apex class/:orgId', component: SelectApexComponent},
-    {path: 'ruleset', component: RulesetSelectionComponent },
+    {path: 'select rule', component: RulesetSelectionComponent },
     {path: 'view report', component: ViewReportComponent},
   ]},
   {path: 'login', component: LoginComponent},

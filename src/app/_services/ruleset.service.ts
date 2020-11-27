@@ -10,7 +10,7 @@ import { RuleRequest } from '../_models/RuleRequest';
 
   export class RulesetService {
     private baseUrl = 'http://localhost:8081/api';
-    private url = this.baseUrl + "/rules"; ///auth
+    private url = this.baseUrl + '/auth/rules'; ///auth
     constructor(private http: HttpClient) { }
 
     public getRulesForRulesets(defaultRulesets: DefaultRuleset): Observable<RuleRequest> {

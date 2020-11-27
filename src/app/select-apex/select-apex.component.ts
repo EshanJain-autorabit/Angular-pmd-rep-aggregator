@@ -58,6 +58,6 @@ export class SelectApexComponent implements OnInit{
       return ;
     }
     this.analysisService.setApexClasses(this.selectedClasses);
-    this.router.navigate(['/view report']);
+    this.router.navigate(['/select rule']);
   }
 }
