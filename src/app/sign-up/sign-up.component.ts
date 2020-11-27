@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,6 +17,7 @@ export class SignUpComponent implements OnInit {
   isSignUpFailed = false;
   error = '';
   loading = false;
+  success = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,6 +35,7 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
       username: ['', Validators.required],
+      email: ['',[Validators.required,Validators.email]],
       password: ['', Validators.required]
   });
   }
@@ -45,19 +48,27 @@ export class SignUpComponent implements OnInit {
     if (this.signUpForm.invalid) {
         return;
     }
-    // this.signUpInfo = new SignUpInfo( this.f.username.value, this.f.password.value);
-
+    this.signUpInfo = new SignUpInfo( this.f.username.value, this.f.email.value, this.f.password.value);
+    console.log(this.signUpInfo);
     this.loading = true;
     this.authenticationService.signUp(this.signUpInfo)
         .subscribe(data => {
           console.log(data);
           this.isSignUpFailed = false;
+          this.loading = false ;
+          this.success = data.message;
+          setTimeout(() => { this.login(); }, 2000);
         },
         error => {
           console.log(error);
-          this.error = error.error.message;
+          this.error = error;
           this.isSignUpFailed = true;
+          this.loading = false;
         });
+}
+
+login(): void{
+  this.router.navigate(['/login']);
 }
 
 }

@@ -27,6 +27,7 @@ export class ViewReportComponent implements OnInit {
    priority5 = 0;
    nodes: TreeNode[];
    nodeInt: TreeNode[];
+   loading = true;
   constructor(
     private analysisService: AnalysisService,
     private router: Router,
@@ -50,6 +51,7 @@ export class ViewReportComponent implements OnInit {
       this.pmdReportObj = JSON.parse(this.report);
       console.log(this.pmdReportObj.files);
       this.trimApexClassName(this.pmdReportObj.files);
+      this.loading = false ;
       // console.log(pmdReport.report);
     });
 
