@@ -13,16 +13,16 @@ import { AuthGuard } from './_services/auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard], children: [
-    { path: '', redirectTo: '/select org', pathMatch: 'full' },
+    { path: '', redirectTo: 'select org', pathMatch: 'full' },
     {path: 'select org', component: SelectOrgComponent},
     {path: 'select apex class/:orgId', component: SelectApexComponent},
+    {path: 'ruleset', component: RulesetSelectionComponent },
     {path: 'view report', component: ViewReportComponent},
   ]},
   {path: 'login', component: LoginComponent},
   {path: 'signUp', component: SignUpComponent},
   {path: 'orgDetails', component: OrgdetailsComponent},
   {path: 'user profile', component: UserProfileComponent, canActivate: [AuthGuard]},
-  {path: 'ruleset', component: RulesetSelectionComponent },
   { path: '**', redirectTo: '' }
 ];
 

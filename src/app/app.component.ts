@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { AuthenticationService } from './_services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,15 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
   title = 'pmd-rep-aggregator-ui';
-
-  constructor(private primengConfig: PrimeNGConfig){ }
+  isLoggedIn = false;
+  constructor(private primengConfig: PrimeNGConfig, private authService: AuthenticationService){ 
+  }
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+    if(!(this.authService.currentUserValue == null)){
+      this.isLoggedIn = true;
+    }
+  
+  
   }
 }

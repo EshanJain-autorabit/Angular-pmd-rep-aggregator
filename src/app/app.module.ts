@@ -5,20 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { OrgdetailsComponent } from './orgdetails/orgdetails.component';
-import { RulesetSelectionComponent } from './ruleset-selection/ruleset-selection.component';
-import { JwtInterceptor } from './_interceptors/JwtInterceptor';
-import { ErrorInterceptor } from './_interceptors/ErrorInterceptor';
-import { SelectOrgComponent } from './select-org/select-org.component';
-import { SelectApexComponent } from './select-apex/select-apex.component';
-import { ViewReportComponent } from './view-report/view-report.component';
-
 import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
 import {PanelModule} from 'primeng/panel';
@@ -33,8 +19,26 @@ import {StepsModule} from 'primeng/steps';
 import {CheckboxModule} from 'primeng/checkbox';
 import {ToastModule} from 'primeng/toast';
 import {MultiSelectModule} from 'primeng/multiselect';
-import { ViewReportComponent } from './view-report/view-report.component';
 import {TreeModule} from 'primeng/tree';
+import {TabMenuModule} from 'primeng/tabmenu';
+// import {MenubarModule} from 'primeng/menubar';
+import {SliderModule} from 'primeng/slider';
+
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { OrgdetailsComponent } from './orgdetails/orgdetails.component';
+import { RulesetSelectionComponent } from './ruleset-selection/ruleset-selection.component';
+import { JwtInterceptor } from './_interceptors/JwtInterceptor';
+import { ErrorInterceptor } from './_interceptors/ErrorInterceptor';
+import { SelectOrgComponent } from './select-org/select-org.component';
+import { SelectApexComponent } from './select-apex/select-apex.component';
+import { ViewReportComponent } from './view-report/view-report.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -48,7 +52,8 @@ import {TreeModule} from 'primeng/tree';
     SelectOrgComponent,
     SelectApexComponent,
     ViewReportComponent,
-    RulesetSelectionComponent
+    RulesetSelectionComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -70,8 +75,10 @@ import {TreeModule} from 'primeng/tree';
     StepsModule,
     CheckboxModule,
     ToastModule,
-    MultiSelectModule
-    TreeModule
+    MultiSelectModule,
+    TreeModule,
+    TabMenuModule,
+    SliderModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

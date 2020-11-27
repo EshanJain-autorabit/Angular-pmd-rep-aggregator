@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       },
       {
         label: 'Select Rule/Rules',
-        routerLink: 'apex'
+        routerLink: 'ruleset'
       },
       {
         label: 'View Report',

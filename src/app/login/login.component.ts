@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
                   // get return url from route parameters or default to '/'
                 //  const returnUrl = this.route.snapshot.queryParams[ ' returnUrl ' ] || '/';
                   this.router.navigate(['/home']);
+                  location.reload();
               },
               error: error => {
                   this.error = error;

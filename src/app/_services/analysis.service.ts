@@ -8,6 +8,7 @@ export class AnalysisService {
   private apexClasses: string[];
   private orgID: string ;
   private rules: string[];
+  private priority: number;
 
   constructor() { }
 
@@ -35,4 +36,11 @@ public getOrgId(): string{
  return this.orgID ;
 }
 
+public setPriority(priority: number): void {
+  this.priority = priority;
+}
+
+public getPriority(): number{
+  return this.priority;
+}
 }
