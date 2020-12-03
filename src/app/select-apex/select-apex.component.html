@@ -1,6 +1,6 @@
 <div class="card p-m-6 p-p-4 bg-light">
 
-    <h5 class="text-warning">Select Apex Class/Classes </h5>
+    <h5 class="bg-orange">Select Apex Components </h5>
     
     <p-table [value]="apexClasses" [loading]="loading" [autoLayout]="true"
      [(selection)]="selectedClasses" selectionMode="multiple">
@@ -29,8 +29,9 @@
         </ng-template>
     </p-table>
 
-    
-    <button [disabled] = "!isApexClassesPresent" pRipple class="btn btn-primary p-m-6" (click) = "nextPage()">Next</button>
-</div>
+    <button [disabled] = "!isApexClassesPresent" pRipple class="btn pi pi-chevron-circle-right btn-primary p-m-6" (click) = "nextPage()">  Next</button>
+
+   </div>
+   
 
 <p-toast position="bottom-center" key="bc"></p-toast>

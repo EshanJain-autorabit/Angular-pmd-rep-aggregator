@@ -40,7 +40,7 @@ export class OrgdetailsComponent implements OnInit {
 ngOnInit(): void {
     if (this.message === 'success') {
       this.getOrg();
-      this.router.navigate(['/user profile']);
+      this.router.navigate(['/org details']);
     }
     this.refresh();
   }

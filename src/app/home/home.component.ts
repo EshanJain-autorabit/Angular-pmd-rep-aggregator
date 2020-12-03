@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
         routerLink: 'select org'
       },
       {
-        label: 'Select Apex Class/Classes',
-        routerLink: 'select apex class'
+        label: 'Select Apex Components',
+        routerLink: 'select apex components'
       },
       {
         label: 'Select Rule/Rules',

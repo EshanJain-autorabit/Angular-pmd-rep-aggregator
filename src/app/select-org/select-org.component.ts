@@ -41,6 +41,6 @@ export class SelectOrgComponent implements OnInit {
   nextPage(): void {
     this.analysisService.setOrgId(this.selectedOrg.id.orgId);
     //console.log(this.analysisService.getOrgId());
-    this.router.navigate(['/select apex class', this.selectedOrg.id.orgId]);
+    this.router.navigate(['/select apex components', this.selectedOrg.id.orgId]);
   }
 }

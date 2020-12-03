@@ -23,6 +23,7 @@ import {TreeModule} from 'primeng/tree';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {SliderModule} from 'primeng/slider';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,7 +40,8 @@ import { SelectApexComponent } from './select-apex/select-apex.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InfoComponent } from './info/info.component';
-
+import {ListboxModule} from 'primeng/listbox';
+import { HighService } from './high.service';
 
 @NgModule({
   declarations: [
@@ -81,10 +83,13 @@ import { InfoComponent } from './info/info.component';
     TabMenuModule,
     SliderModule,
     BreadcrumbModule,
+    InputTextareaModule,
+    ListboxModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    HighService
   ],
 
   bootstrap: [AppComponent]

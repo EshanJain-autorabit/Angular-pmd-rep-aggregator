@@ -12,17 +12,18 @@ import { ViewReportComponent } from './view-report/view-report.component';
 import { AuthGuard } from './_services/auth-guard.service';
 import { InfoComponent } from './info/info.component';
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard], children: [
     { path: '', redirectTo: 'select org', pathMatch: 'full' },
     {path: 'select org', component: SelectOrgComponent},
-    {path: 'select apex class/:orgId', component: SelectApexComponent},
+    {path: 'select apex components/:orgId', component: SelectApexComponent},
     {path: 'select rule', component: RulesetSelectionComponent },
     {path: 'view report', component: ViewReportComponent},
   ]},
   {path: 'login', component: LoginComponent},
   {path: 'signUp', component: SignUpComponent},
-  {path: 'orgDetails', component: OrgdetailsComponent},
+  {path: 'org details', component: OrgdetailsComponent, canActivate: [AuthGuard]},
   {path: 'user profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   {path: 'overview', component: InfoComponent},
   { path: '**', redirectTo: '' }

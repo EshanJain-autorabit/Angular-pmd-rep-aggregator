@@ -14,16 +14,17 @@ export class NavbarComponent implements OnInit {
 
   activeItem: MenuItem;
 
-  ngOnInit() {
+  ngOnInit(): void {
       this.items = [
-          {label: 'Home', icon: 'pi pi-fw pi-home', routerLink:['/select org']},
-          {label: 'User Profile', icon: 'pi pi-fw pi-user', routerLink:['/user profile']},
-          {label: 'Logout', icon: 'pi pi-fw pi-power-off', command: (event) =>{this.authService.logout();
-          location.reload();} },
-          {label: 'About Project', icon: 'pi pi-book', routerLink:['/overview']}
+          {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: ['/select org']},
+          {label: 'SFOrg Mgmt.', icon: 'pi pi-fw pi-th-large', routerLink: ['/org details']},
+          {label: 'User Profile', icon: 'pi pi-fw pi-user', routerLink: ['/user profile']},
+          {label: 'About Project', icon: 'pi pi-book', routerLink: ['/overview']},
+          {label: 'Logout', icon: 'pi pi-fw pi-power-off', command: (event) => {this.authService.logout();
+                                                                                location.reload(); } },
       ];
 
-      this.activeItem = this.items[0];
+     // this.activeItem = this.items[0];
   }
 
 }

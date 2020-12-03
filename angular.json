@@ -28,9 +28,14 @@
               "./node_modules/primeng/resources/themes/saga-blue/theme.css",
               "./node_modules/primeng/resources/primeng.min.css",
               "./node_modules/primeflex/primeflex.css",
+              "./node_modules/prismjs/themes/prism-okaidia.css",
+              "./node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
+              "./node_modules/prismjs/plugins/match-braces/prism-match-braces.css",
+              "./node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {

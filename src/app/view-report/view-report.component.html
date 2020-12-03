@@ -1,15 +1,17 @@
 <div class="card p-m-6 p-p-4 ">
 
-    <h5 class="text-warning">Pmd Report</h5>
+    <h5 class="bg-orange">Pmd Report</h5>
    
 <p-table styleClass="p-mt-4" [loading]="loading">
     <ng-template pTemplate="header" [value]="">
         <tr >
             <th >Files </th>
             <th class="text-info">Violations  </th>
-            <th class="text-danger">Priority High</th>
-             <th class="text-warning">Priority Medium </th>
-            <th class="text-primary">Priority Low </th>
+            <th class="text-danger">Priority 1 (High)</th>
+            <th class="text-danger">Priority 2 </th>
+            <th class="text-warning">Priority 3 </th>
+            <th class="text-primary">Priority 4 </th>
+            <th class="text-primary">Priority 5 (Low)</th>
         </tr>
     </ng-template>  
     <ng-template pTemplate="footer" >
@@ -17,26 +19,38 @@
             <td > {{files}} </td>
             <td class="text-info"> {{violations}} </td>
             <td class="text-danger">{{priority1}} </td>
-             <td class="text-warning">{{priority3}}</td>
+            <td class="text-danger"> 0 </td>
+            <td class="text-warning">{{priority3}}</td>
+            <td class="text-primary"> 0 </td>
             <td class="text-primary">{{priority5}}</td>
         </tr>
     </ng-template>   
 </p-table>
 
-<h5 class="text-warning p-mt-4 p-mx-2" >Details</h5>
+<h5 class="bg-orange p-mt-4 p-mx-2" >Details</h5>
 
 <p-tree [value]="nodes" styleClass="p-mt-2 bg-light">
-    <ng-template let-node pTemplate="viol">
-       <b class="text-info"> {{node.label}} </b> 
-    </ng-template>
-    <ng-template let-node pTemplate="desc" styleClass="text-info" >
-       <b>{{node.label}} </b>
-    </ng-template>
-    <ng-template let-node pTemplate="prior" styleClass="text-warning">
-       <b class="text-warning ">{{node.label}}</b>
-    </ng-template>
+  
     <ng-template let-node pTemplate="default">
         <b class = "text-primary" >{{node.label}}</b>
+    </ng-template>
+
+    <ng-template let-node pTemplate="code">
+        <div class="overflow-auto" style='max-height:400px; width:1000px'>
+        <pre class="line-numbers"> <code class = "language-java line-numbers"><div *ngFor = "let data of node.data.apexCode">{{data}}  
+        </div></code>  
+        </pre>
+        </div>
+    </ng-template>
+
+    <ng-template let-node pTemplate="viol">
+        <div class="overflow-auto" style='max-height:200px; width:1000px'>
+        <ul class="list-group">
+            <div *ngFor = "let daa of node.data.violations">
+             <b><li class="list-group-item text-info "> {{daa}}</li></b> 
+            </div>
+          </ul>
+        </div>
     </ng-template>
 </p-tree>
 <br>

@@ -10,7 +10,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 export class UserProfileComponent implements OnInit {
   user: User;
 
-  constructor( private authService: AuthenticationService) { 
+  constructor( private authService: AuthenticationService) {
     this.authService.currentUser.subscribe(loginResponse => {
       this.user = loginResponse.user;
     });

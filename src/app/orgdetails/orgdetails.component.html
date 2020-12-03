@@ -1,4 +1,4 @@
-<p-card  styleClass="p-m-1 p-p-2 bg-light" header="">
+<p-card  styleClass="p-m-1 p-p-2 " header="">
   <h3 class="text-secondary">Org Details</h3>
   <button
     pButton
@@ -62,14 +62,14 @@
 
   
   <div class="p-m-4">
-    <p-fieldset [toggleable]="true" collapsed="true"  styleClass="bg-light" >
+    <p-fieldset [toggleable]="true"  styleClass="bg-light" >
       <p-header >
         <div Class="text-success">View Orgs</div>
       </p-header>
     <p-table [value]="orgs"  [autoLayout]="true">
       <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
-          <h4 class="text-warning">Registered Orgs</h4>
+          <h4 class="bg-orange">Registered Orgs</h4>
           <p-button icon="pi pi-refresh"></p-button>
         </div>
       </ng-template>

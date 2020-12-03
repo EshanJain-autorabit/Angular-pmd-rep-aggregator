@@ -7,3 +7,10 @@ body
   background-size: cover;
   background-repeat: no-repeat;
 }
+.bg-orange{
+  color:#f57c40;
+}
+.bg-blue{
+  color:#00a8eb
+}
+
