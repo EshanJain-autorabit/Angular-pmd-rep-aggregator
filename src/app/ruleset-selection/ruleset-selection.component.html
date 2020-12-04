@@ -1,7 +1,44 @@
-<div class="card p-m-6 p-p-4 bg-light">
+
+<div class="card p-p-6">
+ 
+  <div class = " card-header bg-white">
+    <h4 class="bg-orange p-m-2 p-p-2" style = "display:inline-block">Ruleset Configuration</h4>
+  </div>
+
   <div class="card-body p-fluid">
-    <h4 class="text-warning p-m-2 p-p-2" style = "display:inline-block"> Ruleset Selection </h4>
-    <br>
+    <button pRipple  class="btn btn-info pi pi-info p-mb-2" (click)="op.toggle($event)" >
+      Selected Rules
+    </button>
+    
+    <p-overlayPanel #op [showCloseIcon]="true" [style]="{width:'600px'}">
+      <ng-template pTemplate >
+          <p-table [value]="storedRules" styleClass="p-datatable-striped" [scrollable]="true"  scrollHeight="200px" >
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>Rule Name</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rule>
+              <tr>
+                  <td> <b>{{rule.substring(rule.indexOf('/')+1 ) +': '+ rule.substring(0,rule.indexOf('/')) }}</b></td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage" let-columns >
+            <tr >
+                <td [attr.colspan]="2">
+      <div class="alert alert-info text-center">All 59 Default rules will be used</div>
+                </td>
+            </tr>
+        </ng-template>
+      </p-table> 
+      </ng-template>
+  </p-overlayPanel>
+
+  <div class = "card-header bg-white">
+    <h5 class="bg-orange p-mb-2" style = "display:inline-block"> Modify </h5>
+  </div>
+ <br>
+ 
     <p-multiSelect
       id="ruleset"
       [options]="rulesets"
@@ -43,10 +80,10 @@
     <small id="slider-help">Coverage increases with priority value</small>
     <button
       pRipple
-      class="btn-block btn btn-primary p-my-4 pi pi-chevron-circle-right"
+      class="btn-block btn btn-primary p-my-4 "
       (click)="submitRulePaths(selectedRules)" 
     >
-      View Report
+      Save
     </button>
   </div>
 </div>

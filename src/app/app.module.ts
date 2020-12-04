@@ -42,6 +42,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { InfoComponent } from './info/info.component';
 import {ListboxModule} from 'primeng/listbox';
 import { HighService } from './high.service';
+import {ChipsModule} from 'primeng/chips';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { HighService } from './high.service';
     SliderModule,
     BreadcrumbModule,
     InputTextareaModule,
-    ListboxModule
+    ListboxModule,
+    ChipsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

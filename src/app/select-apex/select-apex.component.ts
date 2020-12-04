@@ -4,6 +4,7 @@ import { OrgId } from '../_models/OrgId';
 import { OrgService } from '../_services/org.service';
 import {MessageService} from 'primeng/api';
 import { AnalysisService } from '../_services/analysis.service';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
   selector: 'app-select-apex',
@@ -17,12 +18,14 @@ export class SelectApexComponent implements OnInit{
   selectedClasses: string[];
   isApexClassesPresent = false ;
   loading = true;
+
   constructor(
     private route: ActivatedRoute,
     private orgService: OrgService,
     private messageService: MessageService,
     private analysisService: AnalysisService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
     ) { }
 
   ngOnInit(): void {
@@ -58,6 +61,14 @@ export class SelectApexComponent implements OnInit{
       return ;
     }
     this.analysisService.setApexClasses(this.selectedClasses);
-    this.router.navigate(['/select rule']);
+    this.authService.currentUser.subscribe(loginResponse => {
+      const storedRulesets = loginResponse.user.rulesets;
+      let storedRules = [];
+      if (storedRulesets != null && storedRulesets.length > 0){
+      storedRules = storedRulesets[0].rules.split(',');
+      }
+      this.analysisService.setRules(storedRules);
+    });
+    this.router.navigate(['/view report']);
   }
 }

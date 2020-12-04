@@ -35,14 +35,6 @@
         <b class = "text-primary" >{{node.label}}</b>
     </ng-template>
 
-    <ng-template let-node pTemplate="code">
-        <div class="overflow-auto" style='max-height:400px; width:1000px'>
-        <pre class="line-numbers"> <code class = "language-java line-numbers"><div *ngFor = "let data of node.data.apexCode">{{data}}  
-        </div></code>  
-        </pre>
-        </div>
-    </ng-template>
-
     <ng-template let-node pTemplate="viol">
         <div class="overflow-auto" style='max-height:200px; width:1000px'>
         <ul class="list-group">
@@ -50,6 +42,14 @@
              <b><li class="list-group-item text-info "> {{daa}}</li></b> 
             </div>
           </ul>
+        </div>
+    </ng-template>
+
+    <ng-template let-node pTemplate="code">
+        <div class="overflow-auto" style='max-height:400px; width:1000px'>
+        <pre class="line-numbers"  data-line="1-5"> <code class = "language-java line-numbers"><div *ngFor = "let data of node.data.apexCode">{{data}}  
+        </div></code>  
+        </pre>
         </div>
     </ng-template>
 </p-tree>

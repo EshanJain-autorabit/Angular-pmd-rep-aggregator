@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DefaultRuleset } from '../_models/DefaultRuleset';
+import { LoginResponse } from '../_models/LoginResponse';
 import { Rule } from '../_models/Rule';
 import { RuleRequest } from '../_models/RuleRequest';
-import { AnalysisService } from '../_services/analysis.service';
+import { Ruleset } from '../_models/Ruleset';
+import { AuthenticationService } from '../_services/authentication.service';
 import { RulesetService } from '../_services/ruleset.service';
 
 @Component({
@@ -21,19 +23,29 @@ export class RulesetSelectionComponent implements OnInit {
   selectedRules: Rule[];
   rulePaths: string[];
   ruleReq: RuleRequest;
+  storedRulesets: Ruleset[];
+  storedRules: string[];
   // isRulesetSelected: boolean;
   // noRuleSelected: boolean;
 
 
   constructor(
     private rulesetService: RulesetService,
-    private analysisService: AnalysisService,
-    private router: Router
+    private authService: AuthenticationService,
+    private router: Router,
     ) {
     this.rulesets = ['Best Practices', 'Code Style', 'Design', 'Documentation', 'Error Prone', 'Performance', 'Security'];
     this.priority = 5;
     // console.log("In constrcutor");
-  }
+    this.authService.currentUser.subscribe(loginResponse => {
+      this.storedRulesets = loginResponse.user.rulesets;
+      this.storedRules = [];
+      if (this.storedRulesets != null && this.storedRulesets.length > 0){
+        console.log(this.storedRulesets[0].rules);
+        this.storedRules = this.storedRulesets[0].rules.split(',');
+      }
+    });
+      }
 
   ngOnInit(): void {}
 
@@ -54,17 +66,40 @@ export class RulesetSelectionComponent implements OnInit {
         this.rulePaths.push(rule.rulePath);
     }
     console.log('Submit Rule Paths rulepaths: ' + this.rulePaths);
-    this.nextPage();
+    this.save();
   }
 
-  nextPage(): void{
+  save(): void{
         if (this.rulePaths == null || this.rulePaths.length === 0)
        {
          return ;
        }
-        this.analysisService.setPriority(this.priority);
-        this.analysisService.setRules(this.rulePaths);
-        this.router.navigate(['/view report']);
+        const defRuleset = new DefaultRuleset(this.rulePaths);
+        //console.log(defRuleset);
+        this.rulesetService.saveRules(defRuleset).subscribe( data => {
+          console.log(data.message);
+          this.selectedRulesets = [];
+          this.selectedRules = [];
+          const login: LoginResponse = JSON.parse(localStorage.getItem('currentUser'));
+          if(login.user.rulesets.length === 0){
+            const ruleset = new Ruleset({rulesetName: 'rule'}, this.rulePaths.toString());
+            const rulesets = [ruleset];
+            login.user.rulesets = rulesets ;
+          }
+          login.user.rulesets[0].rules = this.rulePaths.toString();
+          localStorage.setItem('currentUser', JSON.stringify(login));
+          this.authService.currentUserValue = login ;
+          this.refresh();
+          alert('Saved Successfully');
+       });
+  }
+
+  refresh(): void{
+    this.authService.currentUser.subscribe(loginResponse => {
+      this.storedRules = loginResponse.user.rulesets[0].rules.split(',') ;
+      console.log('im here');
+    });
+    // console.log(this.orgs);
   }
 
 }

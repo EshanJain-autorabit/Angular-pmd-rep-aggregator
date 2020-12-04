@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signUp', component: SignUpComponent},
   {path: 'org details', component: OrgdetailsComponent, canActivate: [AuthGuard]},
+  {path: 'ruleset', component: RulesetSelectionComponent, canActivate: [AuthGuard] },
   {path: 'user profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   {path: 'overview', component: InfoComponent},
   { path: '**', redirectTo: '' }
