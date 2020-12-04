@@ -11,6 +11,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { AuthGuard } from './_services/auth-guard.service';
 import { InfoComponent } from './info/info.component';
+import { ReviewerComponent } from './reviewer/reviewer.component';
 
 
 const routes: Routes = [
@@ -18,8 +19,9 @@ const routes: Routes = [
     { path: '', redirectTo: 'select org', pathMatch: 'full' },
     {path: 'select org', component: SelectOrgComponent},
     {path: 'select apex components/:orgId', component: SelectApexComponent},
-    {path: 'select rule', component: RulesetSelectionComponent },
+    {path: 'reviewer', component: ReviewerComponent },
     {path: 'view report', component: ViewReportComponent},
+
   ]},
   {path: 'login', component: LoginComponent},
   {path: 'signUp', component: SignUpComponent},

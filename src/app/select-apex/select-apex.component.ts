@@ -69,6 +69,6 @@ export class SelectApexComponent implements OnInit{
       }
       this.analysisService.setRules(storedRules);
     });
-    this.router.navigate(['/view report']);
+    this.router.navigate(['/reviewer']);
   }
 }

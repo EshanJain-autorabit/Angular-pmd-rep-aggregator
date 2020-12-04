@@ -9,6 +9,7 @@ export class AnalysisService {
   private orgID: string ;
   private rules: string[];
   private priority: number;
+  private emailRecipients: string[]
 
   constructor() { }
 
@@ -26,6 +27,14 @@ export class AnalysisService {
 
 public getRules(): string[]{
  return this.rules ;
+}
+
+public setRecipients(recipients: string[]): void{
+  this.emailRecipients = recipients ;
+}
+
+public getRecipients(): string[]{
+ return this.emailRecipients ;
 }
 
  public setOrgId(orgId: string): void{

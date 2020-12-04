@@ -31,8 +31,8 @@ export class HomeComponent implements OnInit {
         routerLink: 'select apex components'
       },
       {
-        label: 'Select Rule/Rules',
-        routerLink: 'select rule'
+        label: 'Add Reviewer',
+        routerLink: 'reviewer'
       },
       {
         label: 'View Report',

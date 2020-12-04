@@ -1,0 +1,14 @@
+<div class="card p-m-6 p-p-4 bg-light">
+
+    <h5 class="bg-orange">Add Reviewer</h5>
+    <div class ="p-field">
+    <label for="emails">Email Recipients</label>
+    <p-chips id="emails" [(ngModel)]="recipients" separator=","></p-chips>
+    </div>
+    
+    <button pRipple class="btn pi pi-chevron-circle-right btn-primary p-m-6" (click) = "nextPage()">  Next</button>
+
+   </div>
+   
+
+<!-- <p-toast position="bottom-center" key="bc"></p-toast> -->

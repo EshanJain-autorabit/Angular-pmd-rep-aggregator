@@ -62,6 +62,7 @@ export class ViewReportComponent implements OnInit , AfterViewChecked{
       this.analysisService.getApexClasses(),
       this.analysisService.getOrgId(),
       this.analysisService.getRules() );
+      this.pmdRequest.setMailList(this.analysisService.getRecipients());
     this.files = this.analysisService.getApexClasses().length ;
     this.orgService.getApexReport(this.pmdRequest).subscribe((pmdReport) => {
       this.report = pmdReport.report ;

@@ -24,6 +24,8 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import {SliderModule} from 'primeng/slider';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {ChipsModule} from 'primeng/chips';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +44,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { InfoComponent } from './info/info.component';
 import {ListboxModule} from 'primeng/listbox';
 import { HighService } from './high.service';
-import {ChipsModule} from 'primeng/chips';
+import { ReviewerComponent } from './reviewer/reviewer.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import {ChipsModule} from 'primeng/chips';
     ViewReportComponent,
     RulesetSelectionComponent,
     NavbarComponent,
-    InfoComponent
+    InfoComponent,
+    ReviewerComponent
   ],
   imports: [
     BrowserModule,
